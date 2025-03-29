@@ -100,10 +100,22 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 ```
 - When the DLL is **loaded into a process**, it **automatically** launches the reverse shell.
 - This **abuses DLL hijacking or injection** to execute malware.
-
 ---
 
----
+## Why This Code is Stealthy
+
+This **DLL-based reverse shell** is designed to be **stealthy** and **difficult to detect** by traditional security solutions. The code employs a few key techniques that contribute to its evasion capabilities:
+
+1. **No User Interaction**: The reverse shell is executed as a DLL, which can be loaded into a process without the user's explicit action. This makes it harder to detect since it doesn't require the typical user-triggered behaviors like running an executable file. By leveraging **DLL injection**, it can remain hidden in memory and avoid common detection methods targeting executables.
+
+2. **Minimal Behavioral Footprint**: The code establishes a **TCP connection** to a remote server and executes system commands through the **`system()`** function. These actions are difficult to flag because the reverse shell itself doesn't exhibit any **suspicious file activity** or aggressive system changes. It only listens for commands and responds, mimicking legitimate network traffic.
+
+3. **Bypassing Signature-Based Detection**: Many traditional **antivirus programs** rely on signature-based detection to flag known threats. However, this reverse shell is **custom-crafted** and doesn’t exhibit easily recognizable patterns that many security tools look for. Since the code is **not widely known**, signature-based antivirus engines have a harder time identifying it as malicious.
+
+4. **Low Detection Rate on VirusTotal**: When uploaded to **VirusTotal**, this DLL was flagged by only **3 out of 73 antivirus engines**. This low detection rate is partly due to the **unique nature** of the code and its use of common system functions (like `system()`) that are often considered benign. Security solutions relying on heuristics or reputation-based detection may fail to flag it, especially when executed in controlled environments that don't exhibit obvious signs of exploitation.
+
+These factors make this reverse shell **highly effective at evading detection** in environments where traditional security tools are used, highlighting the need for **advanced behavioral analysis** and **network monitoring** to detect malicious activity in real-time.
+
 
 ## Further Reading
 - [MITRE ATT&CK: Execution Techniques](https://attack.mitre.org/techniques/T1059/)
