@@ -116,6 +116,7 @@ This **DLL-based reverse shell** is designed to be **stealthy** and **difficult 
 
 These factors make this reverse shell **highly effective at evading detection** in environments where traditional security tools are used, highlighting the need for **advanced behavioral analysis** and **network monitoring** to detect malicious activity in real-time.
 
+---
 
 ## Further Reading
 - [MITRE ATT&CK: Execution Techniques](https://attack.mitre.org/techniques/T1059/)
