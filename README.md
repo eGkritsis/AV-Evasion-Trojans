@@ -10,9 +10,8 @@ EvasionDLL is a research-focused project demonstrating how **DLL-based reverse s
 During testing, **Windows 10 and Windows 11 did not flag this DLL as malicious**, allowing it to execute without interference. Standard Windows Defender protections were **bypassed** in a default configuration.  
  
 ### VirusTotal Scan Results  
-Additionally, when uploaded to **VirusTotal**, the file received **only 3 detections out of 73 antivirus engines**, indicating that many security solutions failed to recognize it as a threat. 
-*(Screenshots will be added here)*  
-
+Additionally, when uploaded to **VirusTotal**, the file received **only 3 detections out of 72 antivirus engines**, indicating that many security solutions failed to recognize it as a threat. 
+![VirusTotal Scan](virus_total.png)
 
 ## Understanding the Code
 
