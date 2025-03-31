@@ -10,9 +10,8 @@
 
 
 ## Overview
-Dedicated to malware development and offensive security research. Here, we experiment with various stealthy malware techniques, focusing on topics like reverse shells, bypass mechanisms, DLL injection, and more. This repository is intended for educational purposes and to further the understanding of malware development.
+This repository is dedicated to **advanced malware development and offensive security research**. The goal is to explore and document **stealthy malware techniques**, including **reverse shells, bypass mechanisms, DLL injection, and process injection methods**. 
 
-The tools and scripts included are created to simulate various attack scenarios in controlled environments, with an emphasis on evading detection and developing attack methodologies.
 ---
 
 ## EvasionDLL - Stealthy DLL-based Reverse Shell
@@ -130,14 +129,6 @@ These factors make this reverse shell **highly effective at evading detection** 
 
 ---
 
-## Further Reading
-- [MITRE ATT&CK: Execution Techniques](https://attack.mitre.org/techniques/T1059/)
-- [Microsoft Security Guidance](https://www.microsoft.com/security/blog/)
-- [DLL Injection Explained](https://attack.mitre.org/techniques/T1055/001/)
-
----
----
-
 # systemsvc.exe - Haskell Reverse Shell - Stealthy PowerShell Execution
 
 ## Overview  
@@ -230,14 +221,4 @@ forever $ do
 
 ---
 
-
-## Further Reading  
-
-- [MITRE ATT&CK: Execution Techniques](https://attack.mitre.org/techniques/T1059/)  
-- [Haskell Network Programming](https://hackage.haskell.org/package/network)  
-- [Advanced Malware Techniques](https://www.offensive-security.com/)  
-
----
-
-
-**Disclaimer:** This repository is for **educational and research purposes only**. 
+**Disclaimer:** This repository is for educational purposes only. But make sure you have **fun**.  
