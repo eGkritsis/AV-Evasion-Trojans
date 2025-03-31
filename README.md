@@ -1,16 +1,16 @@
 # MalDevLab
 
 ```
-  _________________________________________________________
+   _________________________________________________________
  /                                                         \
 |    _____ _____ _____ _____ _____ _____ _____ _____ _____  |
 |   |     |     |     |     |     |     |     |     |     | |
 |   | [-] | [X] | [ ] | [ ] | [✓] | [ ] | [ ] | [X] | [ ] | |
 |   |_____|_____|_____|_____|_____|_____|_____|_____|_____| |
 |                                                           |
-|   █▀▄ █▀▄ █▀▀ █▀█ █▀▀ █▀▄   █▀▀ █▀█ █▀▄ █▀▀ █▀▀ █▀█      |
-|   █ █ █ █ █▀▀ █ █ █▀▀ █▀▄   █   █ █ █ █ █▀▀ █   █ █      |
-|   █▀  █▀▄ ▀▀▀ ▀▀█ ▀▀▀ ▀ ▀   ▀▀▀ ▀▀█ ▀▀  ▀▀▀ ▀▀▀ ▀ ▀      |
+|        /\_/\     /\_/\                                   |
+|       ( o.o )   ( o.o )   Advanced Malware Development    |
+|        > ^ <     > ^ <                                   |
 |                                                           |
 |   >_ [✓] Payload: EXECUTING                               |
 |   >_ [✓] Bypassing AV...                                 |
@@ -20,12 +20,10 @@
         |    -= MALWARE DEV LAB [ACTIVE] =-       |
         |_________________________________________|
            \                           /
-            \    [ REDACTED ]         /
+            \        [ TRASH ]        /
              \_______________________/
 
-``` 
-
-
+```
 ## Overview
 This repository is dedicated to **advanced malware development and offensive security research**. The goal is to explore and document **stealthy malware techniques**, including **reverse shells, bypass mechanisms, DLL injection, and process injection methods**. 
 
@@ -237,5 +235,12 @@ forever $ do
 - **Runs PowerShell output redirection in separate threads**, ensuring smooth communication.  
 
 ---
+
+```
+    (\_/)  
+    (•_•)  
+   />💻  HACK THE PLANET!
+
+```
 
 **Disclaimer:** This repository is for educational purposes only. But make sure you have **fun**.  
