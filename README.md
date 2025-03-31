@@ -1,13 +1,19 @@
 # MalDevLab
 
-███╗   ███╗ █████╗ ██╗      ██████╗ ███████╗██╗   ██╗
-████╗ ████║██╔══██╗██║     ██╔═══██╗██╔════╝╚██╗ ██╔╝
-██╔████╔██║███████║██║     ██║   ██║███████╗ ╚████╔╝ 
-██║╚██╔╝██║██╔══██║██║     ██║   ██║╚════██║  ╚██╔╝  
-██║ ╚═╝ ██║██║  ██║███████╗╚██████╔╝███████║   ██║   
-╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝   ╚═╝   
-       [ MalDevLab - Offensive Security]   
+╔════════════════════════════════════╗
+║   ███╗   ███╗ █████╗ ██╗           ║
+║   ████╗ ████║██╔══██╗██║           ║
+║   ██╔████╔██║███████║██║           ║
+║   ██║╚██╔╝██║██╔══██║██║           ║
+║   ██║ ╚═╝ ██║██║  ██║███████╗      ║
+║   ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝      ║
+║                                    ║
+║   Advanced Malware Development     ║
+╚════════════════════════════════════╝
 
+.-.-. .-.-. .-.-. .-.-. .-.-. .-.-. .-.-.
+|M|a|l|D|e|v|L|a|b| | | | | | | | | | | |
+'-'-' '-'-' '-'-' '-'-' '-'-' '-'-' '-'-'
 
 ## Overview
 This repository is dedicated to **advanced malware development and offensive security research**. The goal is to explore and document **stealthy malware techniques**, including **reverse shells, bypass mechanisms, DLL injection, and process injection methods**. 
