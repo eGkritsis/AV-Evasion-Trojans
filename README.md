@@ -159,9 +159,11 @@ This is a **Haskell-based reverse shell** that establishes a connection to a rem
 
 ## Why This Code is Stealthy  
 
-**Fileless Execution Possible** – Can be compiled as a **memory-only payload**.  
-**Minimal Behavioral Footprint** – Runs PowerShell without spawning visible processes.  
-**No Antivirus Detections (0/73)** – Not flagged by VirusTotal.  
+**Uncommon Programming Language** – Haskell is rarely used in malware development, making it less likely to be analyzed or flagged by antivirus engines. Most security tools focus on common scripting languages like PowerShell, Python, and C/C++.  
+
+**Unique Compiler & Runtime** – The **GHC (Glasgow Haskell Compiler)** produces binaries that differ significantly from typical malware patterns. Since Haskell compiles to native code with unique memory layouts and calling conventions, traditional signature-based detection struggles to classify it as malicious.  
+
+**Low Heuristic Detection** – Antivirus engines rely on heuristics and behavior analysis to detect malware. Because Haskell-generated executables interact with system APIs in a way that differs from conventional C/C++ malware, they often evade dynamic analysis.  
 
 ---
 
